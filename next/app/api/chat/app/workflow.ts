@@ -120,7 +120,7 @@ export function getWorkflow(
           );
         }
       }
-      return stopAgentEvent.with({ result: response });
+      return stopAgentEvent.with({ message: response, result: response });
     }
 
     if (toolCallResponse.hasMultipleTools()) {
