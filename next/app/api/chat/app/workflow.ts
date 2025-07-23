@@ -120,7 +120,13 @@ export function getWorkflow(
           );
         }
       }
-      return stopAgentEvent.with({ message: response, result: response });
+      return stopAgentEvent.with({
+        message: {
+          content: response, // Assign the 'response' string to the 'content' property
+          role: 'assistant'  // Assign the appropriate role (e.g., 'assistant', 'user', 'system')
+        },
+        result: response
+      });
     }
 
     if (toolCallResponse.hasMultipleTools()) {
